@@ -1,0 +1,44 @@
+.text-center{
+    text-align: center;
+}
+
+.main-view{
+    padding: 1em;
+}
+.order-view{
+    /* margin: 0.5em 1em;
+    display: inline-block;*/
+    padding: 1em 2em;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+}
+
+.navbar-main{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-main li{
+    float: left;
+}
+
+.br-left{
+    border-radius: 10px 0px 0px 10px;   
+}
+
+.br-right{
+    border-radius: 0px 10px 10px 0px;   
+}
+
+.navbar-main li a{
+    display: block;
+    padding: 16px;
+    background-color: rgb(26, 26, 26);
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-main li a:hover{
+    background-color: #20c997;
+}
