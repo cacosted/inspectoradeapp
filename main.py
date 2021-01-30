@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template,request,jsonify 
 
 app = Flask(__name__)
 
@@ -24,19 +24,44 @@ def ordernumber():
         else:
           orders += ',' + done[0][1:] 
         
-        # if stringer == None:
-        #   stringer = numb[1:]
-        # else:
-        #   stringer += ',' + numb[1:]
     return render_template('order.html',numbers=orders,quantity=count)
 
   else:
     return render_template('order.html')
     
-# @app.route('/vineta')
-# def order():
+@app.route('/visneta', methods=['POST','GET'])
+def visneta():
+  
+  if request.method == 'POST':
 
-# def vineta():
+    count = 0
+    final_text = None
+    
+    filer = request.files['filer']
+    fh = str(filer.read())
+    
+    parts = fh.split('Inspection - ')
+    # locator = parts[30].find('\\t')
+    # endor = parts[30].find('-1')
+    # hello = parts[30][locator+2:endor]
+    
+    for part in parts:
+      if '-1 ' in part:
+        count += 1
+        start_pos = part.find('\\t')
+        end_pos = part.find('-1')
+        temporal = part[start_pos+2:end_pos]
+              
+        if final_text is None:
+          final_text = temporal + ' - 1'
+        else:
+          final_text += ',' + temporal + ' - 1'
+          
+    # return jsonify(final_text,count)
+    return render_template('visneta.html',filecon=final_text,quantity=count)
+  
+  else:
+    return render_template('visneta.html')
 
 # @app.route('/national-field')
 

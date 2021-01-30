@@ -5,14 +5,14 @@
 <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 {% endblock %}
 
-{% block header %}OrderNumber Generator{% endblock %}
+{% block header %}Visneta orders Generator{% endblock %}
 
 {% block thatbody %}
 <div class="container overflow-hidden order-view">
     <div class="row gy-5">
         <div class="col">
-            <h1 class="fw-bold">OrderNumber Generator</h1>
-            <p>Just paste your orders here and press the button.</p>
+            <h1 class="fw-bold">Visneta Orders Generator</h1>
+            <p>Just search for the text file (.txt) here and press the button.</p>
         </div>
         <div class="col-2">
             <a href="/"><button type="button" class="btn btn-danger">Go back</button></a>
@@ -20,21 +20,22 @@
     </div>
     <div class="row gy-5">
         <div class="col">
-            <form action="/order" method="POST">
-                <input type="text" name="contener" id="id-con" class="w-50">
+            <form action="/visneta" method="POST" enctype="multipart/form-data">
+                <input type="file" name="filer" id="id-file" class="w-50">
                 <input type="submit" value="Get text">
             </form>
         </div>
     </div>
+    
     <div class="row gy-5">
         <div class="col">
-            {%if not numbers %}
+            {%if not filecon %}
             
             {%else%}
             <div class="mt-3">
 
                     <label class="fs-4 fw-bold" name="quantity">There are: <strong class="text-success">{{quantity}} inspections</strong></label><br>   
-                    <textarea cols="110" rows="15" readonly>{{numbers}}</textarea>
+                    <textarea cols="110" rows="15" readonly>{{filecon}}</textarea>
 
             </div>
             {%endif%}
